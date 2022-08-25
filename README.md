@@ -48,7 +48,7 @@ package io.ionic.starter;
 import android.os.Bundle;
 
 import com.getcapacitor.BridgeActivity;
-import capacitor.porcupine.wake.word.PorcupineWakeWordPlugin;
+import com.getcapacitor.community.porcupinewakeword.PorcupineWakeWordPlugin;
 
 public class MainActivity extends BridgeActivity {
     @Override
@@ -90,6 +90,44 @@ async function listenForWakeWord(): Promise<void> {
             sensitivity: 0.8
         }],
         modelPath: "models/myModel.pv",
+    })
+
+    PorcupineWakeWord.addListener("keywordDetected", (keyword: KeywordEventData) => {
+        console.log('Keyword detected:', keyword)
+    })
+
+    PorcupineWakeWord.addListener("error", (error: ErrorEventData) => {
+        console.log('Error detected:', error.message)
+    })
+
+    return PorcupineWakeWord.start()
+}
+
+function main() {
+    const result = await PorcupineWakeWord.hasPermission()
+
+    if (result.hasPermission) {
+        this.listenForWakeWord()
+    } else {
+        const permissionStatus = await PorcupineWakeWord.requestPermission()
+        if (permissionStatus.record_audio === "granted") {
+            this.listenForWakeWord()
+        }
+    }
+}
+```
+
+Example usage using a built in keyword.
+
+```ts
+import { PorcupineWakeWord, BuiltInKeyword, KeywordEventData, ErrorEventData } from 'capacitor-porcupine-wake-word';
+
+async function listenForWakeWord(): Promise<void> {
+    await PorcupineWakeWord.initFromBuiltInKeywords({
+        accessKey: "myAccessKey",
+        keywordOpts: [{
+            keyword: BuiltInKeyword.OK_GOOGLE,
+        }],
     })
 
     PorcupineWakeWord.addListener("keywordDetected", (keyword: KeywordEventData) => {
