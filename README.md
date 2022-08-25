@@ -128,7 +128,7 @@ async function listenForWakeWord(): Promise<void> {
     return PorcupineWakeWord.start()
 }
 
-function main() {
+async function main() {
     const result = await PorcupineWakeWord.hasPermission()
 
     if (result.hasPermission) {
@@ -166,7 +166,7 @@ async function listenForWakeWord(): Promise<void> {
     return PorcupineWakeWord.start()
 }
 
-function main() {
+async function main() {
     const result = await PorcupineWakeWord.hasPermission()
 
     if (result.hasPermission) {
