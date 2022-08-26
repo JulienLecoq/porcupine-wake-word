@@ -2,7 +2,7 @@
 <h3 align="center">Porcupine Wake Word</h3>
 <p align="center"><strong><code>@capacitor-community/porcupine-wake-word</code></strong></p>
 <p align="center">
-    This plugin is a bridge to the native SDKs provided by Picovoice on iOS and Android for their product called Porcupine Wake Word.
+    This plugin is a bridge to the native SDKs provided by Picovoice on iOS, Android and Web platforms for their product called Porcupine Wake Word.
 </p>
 
 <p align="center">
@@ -31,7 +31,7 @@
 
 ## Introduction
 
-This plugin is a bridge to the native SDKs provided by Picovoice on iOS and Android for their product called [Porcupine Wake Word](https://picovoice.ai/platform/porcupine/).
+This plugin is a bridge to the native SDKs provided by Picovoice on iOS, Android and Web for their product called [Porcupine Wake Word](https://picovoice.ai/platform/porcupine/).
 
 A **wake word** is a special word or phrase that is meant to activate a device when spoken. It is also referred to as 'hotword', 'trigger word', and 'wake up word'.
 
