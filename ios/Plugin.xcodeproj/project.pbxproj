@@ -16,6 +16,9 @@
 		50ADFFA42020D75100D50D53 /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
 		50ADFFA82020EE4F00D50D53 /* PorcupineWakeWordPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFFA72020EE4F00D50D53 /* PorcupineWakeWordPlugin.m */; };
 		50E1A94820377CB70090CE1A /* PorcupineWakeWordPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* PorcupineWakeWordPlugin.swift */; };
+		F90A29E528BB938500E49DE1 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90A29E428BB938500E49DE1 /* CustomError.swift */; };
+		F90A29E728BBAC8000E49DE1 /* PorcupineWakeWordErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90A29E628BBAC8000E49DE1 /* PorcupineWakeWordErrors.swift */; };
+		F90A29E928BBAFD100E49DE1 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90A29E828BBAFD100E49DE1 /* PermissionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F90A29E428BB938500E49DE1 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		F90A29E628BBAC8000E49DE1 /* PorcupineWakeWordErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorcupineWakeWordErrors.swift; sourceTree = "<group>"; };
+		F90A29E828BBAFD100E49DE1 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 				50ADFF8B201F53D600D50D53 /* PorcupineWakeWordPlugin.h */,
 				50ADFFA72020EE4F00D50D53 /* PorcupineWakeWordPlugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
+				F90A29E428BB938500E49DE1 /* CustomError.swift */,
+				F90A29E628BBAC8000E49DE1 /* PorcupineWakeWordErrors.swift */,
+				F90A29E828BBAFD100E49DE1 /* PermissionManager.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -270,11 +279,17 @@
 				"${PODS_ROOT}/Target Support Files/Pods-PluginTests/Pods-PluginTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
+				"${BUILT_PRODUCTS_DIR}/Porcupine-iOS/Porcupine.framework",
+				"${BUILT_PRODUCTS_DIR}/ios-voice-processor/ios_voice_processor.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Porcupine-iOS/PvPorcupine.framework/PvPorcupine",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Porcupine.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ios_voice_processor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PvPorcupine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -307,7 +322,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E1A94820377CB70090CE1A /* PorcupineWakeWordPlugin.swift in Sources */,
+				F90A29E528BB938500E49DE1 /* CustomError.swift in Sources */,
+				F90A29E928BBAFD100E49DE1 /* PermissionManager.swift in Sources */,
 				2F98D68224C9AAE500613A4C /* PorcupineWakeWord.swift in Sources */,
+				F90A29E728BBAC8000E49DE1 /* PorcupineWakeWordErrors.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* PorcupineWakeWordPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,9 +479,10 @@
 			baseConfigurationReference = 5E23F77F099397094342571A /* Pods-Plugin.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2JJ37FMD7R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -487,9 +506,10 @@
 			baseConfigurationReference = 91781294A431A2A7CC6EB714 /* Pods-Plugin.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2JJ37FMD7R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

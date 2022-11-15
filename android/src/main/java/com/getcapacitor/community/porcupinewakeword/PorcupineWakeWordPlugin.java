@@ -108,7 +108,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
         try {
             this.porcupineManager = new PorcupineManager.Builder()
                     .setAccessKey(call.getString("accessKey"))
-                    .setModelPath(call.getString("modelPath"))
+                    .setModelPath(call.getString("modelPath") + ".pv") // TODO: Handle the case where modelPath is null
                     .setKeywords(keywords)
                     .setSensitivities(sensitivities)
                     .setErrorCallback(errorCallback)
@@ -145,7 +145,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
             }
 
             try {
-                keywordPaths[i] = keywordPathOpt.getString("keywordPath");
+                keywordPaths[i] = keywordPathOpt.getString("keywordPath") + ".ppn";
             } catch (JSONException e) {
                 call.reject(e.getMessage(), JSON_EXCEPTION_ERROR_CODE);
                 return;
@@ -160,7 +160,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
         try {
             this.porcupineManager = new PorcupineManager.Builder()
                     .setAccessKey(call.getString("accessKey"))
-                    .setModelPath(call.getString("modelPath"))
+                    .setModelPath(call.getString("modelPath") + ".pv") // TODO: Handle the case where modelPath is null
                     .setKeywordPaths(keywordPaths)
                     .setSensitivities(sensitivities)
                     .setErrorCallback(errorCallback)

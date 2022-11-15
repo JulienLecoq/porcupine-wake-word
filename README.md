@@ -285,6 +285,10 @@ start() => Promise<void>
 
 Starts recording audio from the microphone and monitors it for the utterances of the given set of keywords.
 
+Rejects from native Porcupine iOS sdk:
+- If porcupine is not initialized.
+- If the user has not granted the record_audio permission.
+
 Rejects:
 - If porcupine is not initialized.
 - If the user has not granted the record_audio permission.
@@ -302,8 +306,8 @@ stop() => Promise<void>
 
 Stops recording audio from the microphone. Hence, stop listening for wake words.
 
-Rejects:
-- PorcupineException: if the PorcupineManager.MicrophoneReader throws an exception while it's being stopped.
+Rejects from native Porcupine Android sdk:
+- PorcupineException message: if the PorcupineManager.MicrophoneReader throws an exception while it's being stopped.
 
 Resolves when the recording from the microphone has stopped.
 
