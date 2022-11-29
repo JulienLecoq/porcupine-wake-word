@@ -12,4 +12,5 @@ CAP_PLUGIN(PorcupineWakeWordPlugin, "PorcupineWakeWord",
            CAP_PLUGIN_METHOD(hasPermission, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(requestPermission, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(checkPermission, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(removeAllListeners, CAPPluginReturnPromise);
 )
