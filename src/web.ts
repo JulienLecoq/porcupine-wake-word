@@ -45,4 +45,8 @@ export class PorcupineWakeWordWeb
     isListening(): Promise<ValueResult<boolean>> {
         throw this.unimplemented('Method not implemented on web.')
     }
+
+    isInitialized(): Promise<ValueResult<boolean>> {
+        throw this.unimplemented('Method not implemented on web.')
+    }
 }

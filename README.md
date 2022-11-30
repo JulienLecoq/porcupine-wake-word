@@ -227,6 +227,7 @@ async function main() {
 * [`checkPermission()`](#checkpermission)
 * [`requestPermission()`](#requestpermission)
 * [`isListening()`](#islistening)
+* [`isInitialized()`](#isinitialized)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 * [Enums](#enums)
@@ -417,6 +418,19 @@ isListening() => Promise<ValueResult<boolean>>
 ```
 
 Returns true if the plugin is listening for wake words, false otherwise.
+
+**Returns:** <code>Promise&lt;<a href="#valueresult">ValueResult</a>&lt;boolean&gt;&gt;</code>
+
+--------------------
+
+
+### isInitialized()
+
+```typescript
+isInitialized() => Promise<ValueResult<boolean>>
+```
+
+Returns true if the plugin is initialized, false otherwise.
 
 **Returns:** <code>Promise&lt;<a href="#valueresult">ValueResult</a>&lt;boolean&gt;&gt;</code>
 

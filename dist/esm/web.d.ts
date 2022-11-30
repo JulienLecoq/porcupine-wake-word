@@ -11,4 +11,5 @@ export declare class PorcupineWakeWordWeb extends WebPlugin implements Porcupine
     checkPermission(): Promise<PermissionStatus>;
     requestPermission(): Promise<PermissionStatus>;
     isListening(): Promise<ValueResult<boolean>>;
+    isInitialized(): Promise<ValueResult<boolean>>;
 }

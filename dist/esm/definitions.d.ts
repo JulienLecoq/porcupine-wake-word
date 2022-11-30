@@ -169,4 +169,8 @@ export interface PorcupineWakeWordPlugin {
      * Returns true if the plugin is listening for wake words, false otherwise.
      */
     isListening(): Promise<ValueResult<boolean>>;
+    /**
+     * Returns true if the plugin is initialized, false otherwise.
+     */
+    isInitialized(): Promise<ValueResult<boolean>>;
 }

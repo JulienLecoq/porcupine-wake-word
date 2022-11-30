@@ -53,6 +53,12 @@ public class PorcupineWakeWordPlugin: CAPPlugin {
         ])
     }
     
+    @objc public func isInitialized(_ call: CAPPluginCall) {
+        call.resolve([
+            "value": self.porcupineManager != nil
+        ])
+    }
+
     /**
      * Initialize Porcupine from built in keywords.
      *
