@@ -1,0 +1,449 @@
+{
+  "api": {
+    "name": "PorcupineWakeWordPlugin",
+    "slug": "porcupinewakewordplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "initFromBuiltInKeywords",
+        "signature": "(options: BuiltInKeywordInitOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "BuiltInKeywordInitOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Initialize Porcupine from built in keywords.\n\nRejects:\n- JSONException: if there is an error while decoding the JSON from the method parameter.\n- PorcupineException: if there is an error while initializing Porcupine.\n\nResolves when Porcupine finished its initialization.",
+        "complexTypes": [
+          "BuiltInKeywordInitOptions"
+        ],
+        "slug": "initfrombuiltinkeywords"
+      },
+      {
+        "name": "initFromCustomKeywords",
+        "signature": "(options: KeywordPathInitOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "KeywordPathInitOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Initialize Porcupine from custom keywords (path of trained models of keywords).\n\nRejects:\n- JSONException: if there is an error while decoding the JSON from the method parameter.\n- PorcupineException: if there is an error while initializing Porcupine.\n\nResolves when Porcupine finished its initialization.",
+        "complexTypes": [
+          "KeywordPathInitOptions"
+        ],
+        "slug": "initfromcustomkeywords"
+      },
+      {
+        "name": "start",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Starts recording audio from the microphone and monitors it for the utterances of the given set of keywords.\n\nRejects:\n- If porcupine is not initialized.\n- If the user has not granted the record_audio permission.\n\nResolves when the recording from the microphone has started, hence Porcupine listening for the utterances of the given set of keywords.",
+        "complexTypes": [],
+        "slug": "start"
+      },
+      {
+        "name": "stop",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Stops recording audio from the microphone. Hence, stop listening for wake words.\n\nRejects:\n- PorcupineException: if the PorcupineManager.MicrophoneReader throws an exception while it's being stopped.\n\nResolves when the recording from the microphone has stopped.",
+        "complexTypes": [],
+        "slug": "stop"
+      },
+      {
+        "name": "delete",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Releases resources acquired by Porcupine. It should be called when disposing the object.\nResolves when resources acquired by Porcupine have been released.",
+        "complexTypes": [],
+        "slug": "delete"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: \"error\", listenerFunc: (data: ErrorEventData) => void) => void",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'error'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(data: ErrorEventData) => void"
+          }
+        ],
+        "returns": "void",
+        "tags": [],
+        "docs": "Register a callback function to run if errors occur while processing audio frames.",
+        "complexTypes": [
+          "ErrorEventData"
+        ],
+        "slug": "addlistenererror"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: \"keywordDetected\", listenerFunc: (data: KeywordEventData) => void) => void",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'keywordDetected'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(data: KeywordEventData) => void"
+          }
+        ],
+        "returns": "void",
+        "tags": [],
+        "docs": "Register a callback function that is invoked upon detection of the keywords specified during the initialization of Porcupine.",
+        "complexTypes": [
+          "KeywordEventData"
+        ],
+        "slug": "addlistenerkeyworddetected"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Remove all registered callback functions.",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      },
+      {
+        "name": "hasPermission",
+        "signature": "() => Promise<PermissionBool>",
+        "parameters": [],
+        "returns": "Promise<PermissionBool>",
+        "tags": [],
+        "docs": "Check if the user has granted the record_audio permission.",
+        "complexTypes": [
+          "PermissionBool"
+        ],
+        "slug": "haspermission"
+      },
+      {
+        "name": "checkPermission",
+        "signature": "() => Promise<PermissionStatus>",
+        "parameters": [],
+        "returns": "Promise<PermissionStatus>",
+        "tags": [],
+        "docs": "Check record_audio permission.",
+        "complexTypes": [
+          "PermissionStatus"
+        ],
+        "slug": "checkpermission"
+      },
+      {
+        "name": "requestPermission",
+        "signature": "() => Promise<PermissionStatus>",
+        "parameters": [],
+        "returns": "Promise<PermissionStatus>",
+        "tags": [],
+        "docs": "Request record_audio permission.\nResolves with the new permission status after the user has denied/granted the request.",
+        "complexTypes": [
+          "PermissionStatus"
+        ],
+        "slug": "requestpermission"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "BuiltInKeywordInitOptions",
+      "slug": "builtinkeywordinitoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keywordOpts",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "BuiltInKeywordInitOption"
+          ],
+          "type": "BuiltInKeywordInitOption[]"
+        }
+      ]
+    },
+    {
+      "name": "BuiltInKeywordInitOption",
+      "slug": "builtinkeywordinitoption",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keyword",
+          "tags": [],
+          "docs": "Built in keyword to listen for (keyword provided by Porcupine).",
+          "complexTypes": [
+            "BuiltInKeyword"
+          ],
+          "type": "BuiltInKeyword"
+        },
+        {
+          "name": "sensitivity",
+          "tags": [
+            {
+              "text": "0.5",
+              "name": "default"
+            }
+          ],
+          "docs": "Sensitivity is the parameter that enables trading miss rate for the false alarm rate.\nThis is a floating-point number within [0, 1]. A higher sensitivity reduces the miss rate at the cost of increased false alarm rate.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        }
+      ]
+    },
+    {
+      "name": "KeywordPathInitOptions",
+      "slug": "keywordpathinitoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keywordPathOpts",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "KeywordPathInitOption"
+          ],
+          "type": "KeywordPathInitOption[]"
+        }
+      ]
+    },
+    {
+      "name": "KeywordPathInitOption",
+      "slug": "keywordpathinitoption",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keywordPath",
+          "tags": [],
+          "docs": "Path to the trained model for the given keyword to listen for.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "sensitivity",
+          "tags": [
+            {
+              "text": "0.5",
+              "name": "default"
+            }
+          ],
+          "docs": "Sensitivity is the parameter that enables trading miss rate for the false alarm rate.\nThis is a floating-point number within [0, 1]. A higher sensitivity reduces the miss rate at the cost of increased false alarm rate.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        }
+      ]
+    },
+    {
+      "name": "ErrorEventData",
+      "slug": "erroreventdata",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "message",
+          "tags": [],
+          "docs": "The message of the error.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "KeywordEventData",
+      "slug": "keywordeventdata",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "index",
+          "tags": [],
+          "docs": "The index of the keyword (index taken from the array passed during the initiliazation of Porcupine)\nthat has been detected.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "PermissionBool",
+      "slug": "permissionbool",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "hasPermission",
+          "tags": [],
+          "docs": "Permission state for record_audio alias.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "PermissionStatus",
+      "slug": "permissionstatus",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "record_audio",
+          "tags": [],
+          "docs": "Permission state for record_audio alias.",
+          "complexTypes": [
+            "PermissionState"
+          ],
+          "type": "PermissionState"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "BuiltInKeyword",
+      "slug": "builtinkeyword",
+      "members": [
+        {
+          "name": "ALEXA",
+          "value": "\"ALEXA\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "AMERICANO",
+          "value": "\"AMERICANO\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "BLUEBERRY",
+          "value": "\"BLUEBERRY\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "BUMBLEBEE",
+          "value": "\"BUMBLEBEE\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "COMPUTER",
+          "value": "\"COMPUTER\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "GRAPEFRUIT",
+          "value": "\"GRAPEFRUIT\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "GRASSHOPPER",
+          "value": "\"GRASSHOPPER\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "HEY_GOOGLE",
+          "value": "\"HEY_GOOGLE\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "HEY_SIRI",
+          "value": "\"HEY_SIRI\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "JARVIS",
+          "value": "\"JARVIS\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "OK_GOOGLE",
+          "value": "\"OK_GOOGLE\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "PICOVOICE",
+          "value": "\"PICOVOICE\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "PORCUPINE",
+          "value": "\"PORCUPINE\"",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "TERMINATOR",
+          "value": "\"TERMINATOR\"",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    }
+  ],
+  "typeAliases": [
+    {
+      "name": "PermissionState",
+      "slug": "permissionstate",
+      "docs": "",
+      "types": [
+        {
+          "text": "'prompt'",
+          "complexTypes": []
+        },
+        {
+          "text": "'prompt-with-rationale'",
+          "complexTypes": []
+        },
+        {
+          "text": "'granted'",
+          "complexTypes": []
+        },
+        {
+          "text": "'denied'",
+          "complexTypes": []
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
