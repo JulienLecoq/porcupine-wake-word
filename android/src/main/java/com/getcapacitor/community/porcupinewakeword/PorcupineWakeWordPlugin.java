@@ -52,6 +52,13 @@ public class PorcupineWakeWordPlugin extends Plugin {
         call.resolve(response);
     }
 
+    @PluginMethod
+    public void isInitialized(PluginCall call) {
+        JSObject response = new JSObject();
+        response.put("value", this.porcupineManager != null);
+        call.resolve(response);
+    }
+
     /**
      * Callback function that is invoked upon detection of the keywords.
      * Notify the JS code that a keyword has been detected.
