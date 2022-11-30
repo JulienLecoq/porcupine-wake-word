@@ -27,5 +27,8 @@ export class PorcupineWakeWordWeb extends WebPlugin {
     requestPermission() {
         throw this.unimplemented('Method not implemented on web.');
     }
+    isListening() {
+        throw this.unimplemented('Method not implemented on web.');
+    }
 }
 //# sourceMappingURL=web.js.map

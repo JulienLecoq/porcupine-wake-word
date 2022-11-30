@@ -64,7 +64,7 @@ export interface InitOptions {
     modelPath?: string
 }
 
-export interface KeywordPathInitOptions extends InitOptions  {
+export interface KeywordPathInitOptions extends InitOptions {
     keywordPathOpts: KeywordPathInitOption[]
 }
 
@@ -99,6 +99,10 @@ export interface PermissionStatus {
      * Permission state for record_audio alias.
      */
     record_audio: PermissionState
+}
+
+export interface ValueResult<T> {
+    value: T
 }
 
 export interface PorcupineWakeWordPlugin {
@@ -185,5 +189,10 @@ export interface PorcupineWakeWordPlugin {
      * Resolves with the new permission status after the user has denied/granted the request.
      */
     requestPermission(): Promise<PermissionStatus>
+
+    /**
+     * Returns true if the plugin is listening for wake words, false otherwise.
+     */
+    isListening(): Promise<ValueResult<boolean>>
 }
 

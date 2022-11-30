@@ -4,6 +4,7 @@ import Porcupine
 
 @objc(PorcupineWakeWordPlugin)
 public class PorcupineWakeWordPlugin: CAPPlugin {
+    private var isListening_ = false
     var porcupineManager: PorcupineManager?
     var permissionManager = AudioPermissionManager()
     
@@ -44,6 +45,12 @@ public class PorcupineWakeWordPlugin: CAPPlugin {
         }
         
         return nil
+    }
+    
+    @objc public func isListening(_ call: CAPPluginCall) {
+        call.resolve([
+            "value": self.isListening_
+        ])
     }
     
     /**
@@ -179,6 +186,7 @@ public class PorcupineWakeWordPlugin: CAPPlugin {
             return reject(call, self.startError.startFailed(error.localizedDescription))
         }
         
+        self.isListening_ = true
         call.resolve()
     }
     
@@ -192,6 +200,7 @@ public class PorcupineWakeWordPlugin: CAPPlugin {
         }
         
         self.porcupineManager!.stop()
+        self.isListening_ = false
         call.resolve()
     }
     
@@ -207,6 +216,7 @@ public class PorcupineWakeWordPlugin: CAPPlugin {
 
         self.porcupineManager!.delete()
         self.porcupineManager = nil
+        self.isListening_ = false
         call.resolve()
     }
     

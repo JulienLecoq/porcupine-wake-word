@@ -1,6 +1,6 @@
-import { WebPlugin } from '@capacitor/core';
+import { WebPlugin } from '@capacitor/core'
 
-import { BuiltInKeywordInitOptions, KeywordPathInitOptions, PermissionBool, PermissionStatus, PorcupineWakeWordPlugin } from './definitions';
+import { BuiltInKeywordInitOptions, KeywordPathInitOptions, PermissionBool, PermissionStatus, PorcupineWakeWordPlugin, ValueResult } from './definitions'
 
 export class PorcupineWakeWordWeb
     extends WebPlugin
@@ -41,6 +41,8 @@ export class PorcupineWakeWordWeb
     requestPermission(): Promise<PermissionStatus> {
         throw this.unimplemented('Method not implemented on web.')
     }
+
+    isListening(): Promise<ValueResult<boolean>> {
+        throw this.unimplemented('Method not implemented on web.')
+    }
 }
-
-

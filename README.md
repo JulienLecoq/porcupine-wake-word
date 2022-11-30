@@ -226,6 +226,7 @@ async function main() {
 * [`hasPermission()`](#haspermission)
 * [`checkPermission()`](#checkpermission)
 * [`requestPermission()`](#requestpermission)
+* [`isListening()`](#islistening)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 * [Enums](#enums)
@@ -409,6 +410,19 @@ Resolves with the new permission status after the user has denied/granted the re
 --------------------
 
 
+### isListening()
+
+```typescript
+isListening() => Promise<ValueResult<boolean>>
+```
+
+Returns true if the plugin is listening for wake words, false otherwise.
+
+**Returns:** <code>Promise&lt;<a href="#valueresult">ValueResult</a>&lt;boolean&gt;&gt;</code>
+
+--------------------
+
+
 ### Interfaces
 
 
@@ -468,6 +482,13 @@ Resolves with the new permission status after the user has denied/granted the re
 | Prop               | Type                                                        | Description                              |
 | ------------------ | ----------------------------------------------------------- | ---------------------------------------- |
 | **`record_audio`** | <code><a href="#permissionstate">PermissionState</a></code> | Permission state for record_audio alias. |
+
+
+#### ValueResult
+
+| Prop        | Type           |
+| ----------- | -------------- |
+| **`value`** | <code>T</code> |
 
 
 ### Type Aliases

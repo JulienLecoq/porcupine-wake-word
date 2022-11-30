@@ -57,6 +57,9 @@ class PorcupineWakeWordWeb extends core.WebPlugin {
     requestPermission() {
         throw this.unimplemented('Method not implemented on web.');
     }
+    isListening() {
+        throw this.unimplemented('Method not implemented on web.');
+    }
 }
 
 var web = /*#__PURE__*/Object.freeze({

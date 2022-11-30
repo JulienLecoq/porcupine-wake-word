@@ -47,7 +47,7 @@
         "parameters": [],
         "returns": "Promise<void>",
         "tags": [],
-        "docs": "Starts recording audio from the microphone and monitors it for the utterances of the given set of keywords.\n\nRejects:\n- If porcupine is not initialized.\n- If the user has not granted the record_audio permission.\n\nResolves when the recording from the microphone has started, hence Porcupine listening for the utterances of the given set of keywords.",
+        "docs": "Starts recording audio from the microphone and monitors it for the utterances of the given set of keywords.\n\nRejects from native Porcupine iOS sdk:\n- If porcupine is not initialized.\n- If the user has not granted the record_audio permission.\n\nRejects:\n- If porcupine is not initialized.\n- If the user has not granted the record_audio permission.\n\nResolves when the recording from the microphone has started, hence Porcupine listening for the utterances of the given set of keywords.",
         "complexTypes": [],
         "slug": "start"
       },
@@ -57,7 +57,7 @@
         "parameters": [],
         "returns": "Promise<void>",
         "tags": [],
-        "docs": "Stops recording audio from the microphone. Hence, stop listening for wake words.\n\nRejects:\n- PorcupineException: if the PorcupineManager.MicrophoneReader throws an exception while it's being stopped.\n\nResolves when the recording from the microphone has stopped.",
+        "docs": "Stops recording audio from the microphone. Hence, stop listening for wake words.\n\nRejects from native Porcupine Android sdk:\n- PorcupineException message: if the PorcupineManager.MicrophoneReader throws an exception while it's being stopped.\n\nResolves when the recording from the microphone has stopped.",
         "complexTypes": [],
         "slug": "stop"
       },
@@ -162,6 +162,18 @@
           "PermissionStatus"
         ],
         "slug": "requestpermission"
+      },
+      {
+        "name": "isListening",
+        "signature": "() => Promise<ValueResult<boolean>>",
+        "parameters": [],
+        "returns": "Promise<ValueResult<boolean>>",
+        "tags": [],
+        "docs": "Returns true if the plugin is listening for wake words, false otherwise.",
+        "complexTypes": [
+          "ValueResult"
+        ],
+        "slug": "islistening"
       }
     ],
     "properties": []
@@ -324,6 +336,24 @@
             "PermissionState"
           ],
           "type": "PermissionState"
+        }
+      ]
+    },
+    {
+      "name": "ValueResult",
+      "slug": "valueresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "value",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "T"
+          ],
+          "type": "T"
         }
       ]
     }
