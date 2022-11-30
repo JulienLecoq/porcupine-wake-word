@@ -27,7 +27,7 @@
 
 | Name   | Android | iOS | Web |
 | :------| :------ | :-- | :-- |
-| Status |    ✅   |  ❌ |  ❌ |
+| Status |    ✅   |  ✅ |  ❌ |
 
 ## Introduction
 
