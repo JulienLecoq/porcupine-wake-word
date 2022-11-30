@@ -31,6 +31,7 @@ import ai.picovoice.porcupine.PorcupineManagerErrorCallback;
 public class PorcupineWakeWordPlugin extends Plugin {
     private PermissionManager permissionManager;
     private PorcupineManager porcupineManager;
+    private boolean isListening_ = false;
 
     static final String NOT_INITIALIZED_ERROR_MSG = "Initialization failed";
     static final String NOT_INITIALIZED_ERROR_CODE = "1";
@@ -42,6 +43,13 @@ public class PorcupineWakeWordPlugin extends Plugin {
     public void load() {
         super.load();
         permissionManager = new PermissionManager(bridge);
+    }
+
+    @PluginMethod
+    public void isListening(PluginCall call) {
+        JSObject response = new JSObject();
+        response.put("value", this.isListening_);
+        call.resolve(response);
     }
 
     /**
@@ -193,6 +201,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
         }
 
         this.porcupineManager.start();
+        this.isListening_ = true;
         call.resolve();
     }
 
@@ -215,6 +224,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
             call.reject(e.getMessage(), STOP_ERROR_CODE);
         }
 
+        this.isListening_ = false;
         call.resolve();
     }
 
@@ -231,6 +241,7 @@ public class PorcupineWakeWordPlugin extends Plugin {
 
         this.porcupineManager.delete();
         this.porcupineManager = null;
+        this.isListening_ = false;
         call.resolve();
     }
 
